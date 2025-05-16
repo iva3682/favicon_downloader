@@ -1,7 +1,7 @@
 import argparse
 from urllib.parse import urlparse
 import requests
-from favicon import FaviconExtractor
+import favicon
 
 
 def main():
@@ -11,9 +11,8 @@ def main():
     args = parser.parse_args()
     url = args.url.strip('/')
     
-    # Используем FaviconExtractor для поиска иконки
-    extractor = FaviconExtractor(url)
-    icons = extractor.get_favicons()
+    # Используем favicon для поиска иконки
+    icons = favicon.get(url)
     
     if len(icons) > 0:
         icon_url = icons[0].url
